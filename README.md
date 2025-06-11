@@ -23,6 +23,26 @@ PREREQUISITES
 
 - Node.js and npm (or yarn) installed on your machine.
 
+INSTALLATION
+
+Clone the repository:
+Bash
+
+git clone <repository-url>
+Navigate to the project directory:
+Bash
+
+cd <project-directory>
+Install dependencies:
+Code snippet
+
+npm install
+Start the development server:
+Bash
+
+npm run dev
+Open your browser and navigate to http://localhost:5173 (or the address shown in your terminal).
+
 TECHNOLOGY USED
 
 - ReactJS: A JavaScript library for building user interfaces.
