@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+
+
+@theme {
+
+  --color-border: hsl(var(--border));
+  --color-background-dark: var(--background-dark);
+  --color-background-light: var(--background-light);
+  --color-toggle-background: var(--toggle-background);
+
+  --color-heading: hsl(var(--heading));
+  --color-button-text: hsl(var(--button-text));
+  --color-main-text: hsl(var(--main-text));
+
+  --color-active: hsl(var(--active));
+  --color-focus: hsl(var(--focus));
+
+
+  --color-card: var(--card);
+}
+
+@layer base {
+  :root {
+    --background-dark: #EBF2FC;
+    --background-light: #EEF8F9;
+    --border: 226, 11%, 37%;
+    --toggle-background: #EEE;
+
+    --heading: 227, 75%, 14%;
+    --button-text: 226, 25%, 17%;
+    --main-text: 226, 11%, 37%;
+
+    --active: 3, 77%, 44%;
+    --focus: 3, 86%, 64%;
+
+    --card: 200, 60%, 99%;
+
+
+  }
+
+  .dark {
+    --background-dark: #04091B;
+    --background-light: #091540;
+    --border: 0, 0%, 78%;
+    --toggle-background: #2F364B;
+
+    --heading: 200, 60%, 99%;
+    --button-text: 0, 0%, 93%;
+    --main-text: 217, 61%, 90%;
+
+    --active: 3, 71%, 56%;
+    --focus: 3, 86%, 64%;
+
+    --card: #202535;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-gradient-to-b from-background-dark to-background-light text-main-text;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: 'Noto Sans', sans-serif;
+  }
+}
+
+
+
+#root {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+
+  @media (width >= 640px) {
+    max-width: 640px;
+  }
+  @media (width >= 768px) {
+    max-width: 768px;
+  }
+  @media (width >= 1024px) {
+    max-width: 1024px;
+  }
+  @media (width >= 1280px) {
+    max-width: 1280px;
+  }
+  @media (width >= 1400px) {
+    max-width: 1400px;
+  }
+}
+
+@utility text-preset-1 {
+  @apply font-bold text-4xl tracking-tighter
+}
+
+@utility text-preset-2 {
+  @apply font-bold text-xl tracking-tight
+}
+
+@utility text-preset-3 {
+  @apply text-xl font-semibold tracking-tight
+}
+
+@utility text-preset-4 {
+  @apply font-semibold text-xl tracking-tight
+}
+
+@utility text-preset-5 {
+  @apply text-lg tracking-tight
+}
+
+@utility text-preset-6 {
+  @apply font-semibold text-lg tracking-tighter
+}
+
