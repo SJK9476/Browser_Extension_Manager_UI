@@ -85,13 +85,26 @@ const ExtensionsSection = () => {
     // state to track current active extensions
     const [extensions, setExtensions] = useState(allExtensions);
 
-    const handleToggle = (index) => {
-        const newExtensions = [...extensions];
-        newExtensions[index].isActive = !newExtensions[index].isActive;
-        setExtensions(newExtensions);
-    }
 
-    const filteredExtensions = allExtensions.filter(extension => {
+    // function to handle toggling isActive property of extension based on
+    // its name
+
+    const handleToggle = (extensionName) => {
+        setExtensions(prevExtensions =>
+            prevExtensions.map(ext =>
+                ext.name === extensionName ? { ...ext, isActive: !ext.isActive } : ext
+            )
+        );
+    };
+
+    // function to remove extension from list held in extensions useState
+    // using the extensions name
+
+    const handleRemove = (extensionName) => {
+        setExtensions(prevExtensions => prevExtensions.filter(ext => ext.name !== extensionName));
+    };
+
+    const filteredExtensions = extensions.filter(extension => {
         if (activeCategory === "Active") {
             return extension.isActive;
         }
@@ -143,11 +156,13 @@ const ExtensionsSection = () => {
                         </div>
                         <div className="flex flex-row justify-between">
                             <button
-                                className="border border-border/30 rounded-full py-2 px-5 cursor-pointer transition-colors duration-300 hover:bg-active hover:text-white  text-preset-6 hover:border-active">Remove
+                                className="border border-border/30 rounded-full py-2 px-5 cursor-pointer transition-colors duration-300 hover:bg-active hover:text-white  text-preset-6 hover:border-active"
+                                onClick={() => handleRemove(extension.name)}
+                            >Remove
                             </button>
                             <div className="flex items-center">
                                 <ToggleSwitch extensionActive={extension.isActive}
-                                              onToggle={() => handleToggle(extensions.indexOf(extension))}
+                                              onToggle={() => handleToggle(extension.name)}
                                 />
                             </div>
 
